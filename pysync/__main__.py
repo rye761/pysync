@@ -1,6 +1,7 @@
 import argparse
 import separate
 import sync
+import os
 
 def cli():
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
@@ -10,13 +11,15 @@ def cli():
 
     args = parser.parse_args().__dict__
 
+    filename = os.path.basename(args['music'])
+
     if args['output_file']:
         output_file = args['output_file']
     else:
-        output_file = args['music'][0:args['music'].find('.')] + '.lrc'
+        output_file = filename[0:filename.find('.')] + '.lrc'
 
     temp_file = separate.separated_vocals(args['music'])
-    vocal_file_name = temp_file.name + '/' + args['music'][0:args['music'].find('.')] + '/vocals.wav'
+    vocal_file_name = temp_file.name + '/' + filename[0:filename.find('.')] + '/vocals.wav'
 
     print(vocal_file_name)
 
