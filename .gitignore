@@ -1,0 +1,9 @@
+build/
+dist/
+pysync/__pycache__/
+pretrained_models/
+__main__.spec
+ffmpeg.exe
+pip
+pysync.spec
+Qt Designer.lnk
